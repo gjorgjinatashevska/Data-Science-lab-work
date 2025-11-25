@@ -1,0 +1,119 @@
+TASK:
+
+You are given the dataset phones-v1.csv, which contains information about mobile phones (brand, model, display, battery capacity, OS, memory, CPU, release year, and more).
+Your goal is to perform a complete data preprocessing and machine learning workflow to build a model that predicts the price category of a phone:
+low price
+medium price
+high price
+
+Requirements:
+1) Load and Initial Analysis
+
+Load the dataset using pandas.read_csv().
+
+Display the first rows (head()), descriptive statistics (describe()), class distribution (value_counts()), and a correlation matrix.
+
+Create basic visualizations (histograms, heatmap, pairplot, etc.).
+
+2) Cleaning and Transforming Categorical Columns
+
+Encode the categorical columns:
+
+Brand → one-hot encoding
+
+Display Type → one-hot encoding
+
+OS → one-hot encoding
+
+Remove the Model column (too many unique values, low predictive value).
+
+Remove the Launch column (string date format, not used in the model).
+
+3) Processing the “Dimensions” Column
+
+The dimensions are provided as text in the format:
+"143.6 x 70.9 x 7.7 mm"
+
+Extract:
+
+Height
+
+Width
+
+Thickness
+
+Create three new numeric columns and remove the original Dimensions column.
+
+4) Additional Cleaning Steps
+
+Convert NFC from boolean to integer (True → 1, False → 0).
+
+Map the values in CPU to the number of cores:
+
+Quad-Core → 4
+
+Hexa-Core → 6
+
+Octa-Core → 8
+
+5) Encoding the Target Variable
+
+Encode Price Range using OrdinalEncoder with the following order:
+
+low price → 0
+
+medium price → 1
+
+high price → 2
+
+6) Handling Missing Values
+
+Use Iterative Imputer to fill missing values for the following columns:
+
+Battery (mAh)
+
+Display Size
+
+CPU
+
+Apple
+
+Height
+
+Thickness
+
+OLED
+
+Android
+
+iOS
+
+7) Splitting the Dataset
+
+Split the dataset into training and testing sets using an 80/20 ratio.
+
+8) Feature Scaling
+
+Normalize the feature values using MinMaxScaler (range: 0 to 1).
+
+9) Train Three Machine-Learning Models
+
+Train and evaluate the following classifiers:
+
+Logistic Regression
+
+K-Nearest Neighbors (KNN)
+
+Decision Tree
+
+For each model, display the classification report.
+
+10) Model Tuning with GridSearchCV
+
+Perform hyperparameter tuning for the Decision Tree using:
+
+criterion ∈ {gini, entropy}
+
+max_depth ∈ {None, 1, 2, 3, 4}
+
+Display the best parameters and generate predictions using the best estimator.
